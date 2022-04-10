@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import defaultImg from "../images/default.jpg";
+import "./Product.css";
+import defaultImg from "../../images/default.jpg";
 
 export default function Product({
   id,

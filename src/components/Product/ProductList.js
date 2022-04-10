@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import Product from "./Product";
+import "./ProductList.css";
 
 export default function ProductList({ items }) {
   return (
     <ul>
       {items.map((item) => {
         return (
-          <li key={item.id}>
+          <li key={item.id} className="ProductList">
             <Product
               id={item.id}
               img={item.img}
