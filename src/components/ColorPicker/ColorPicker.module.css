@@ -1,12 +1,20 @@
 .container {
   padding: 10px;
+  border: 1px solid black;
 }
 .title {
   font-size: 28px;
 }
-.option {
+.btn {
   display: inline-block;
   width: 40px;
   height: 40px;
   margin: 4px;
+  cursor: pointer;
+  border: 1px solid black;
+  transition: transform 250ms ease;
+}
+.btnActive {
+  composes: btn;
+  transform: scale(1.2);
 }

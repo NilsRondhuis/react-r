@@ -1,0 +1,20 @@
+.dropdown {
+  position: relative;
+  padding: 20px 10px;
+  width: 300px;
+  border: 1px solid black;
+}
+.btn:not(:last-child) {
+  margin-right: 10px;
+}
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 20px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  background-color: teal;
+  transition: all 250ms ease;
+}
