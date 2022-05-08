@@ -1,8 +1,0 @@
-[
-    { "label": "red", "color": "#ff0000" },
-    { "label": "green", "color": "#008000" },
-    { "label": "blue", "color": "#0000ff" },
-    { "label": "gray", "color": "#808080" },
-    { "label": "pink", "color": "#ffc0cb" },
-    { "label": "indigo", "color": "#4b0082" }
-]

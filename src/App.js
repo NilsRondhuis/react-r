@@ -1,11 +1,8 @@
 import { Component } from "react";
 import Section from "./components/Section/Section";
-// import Counter from "./components/Counter/Counter";
-// import Dropdown from "./components/Dropdown/Dropdown";
-// import ColorPicker from "./components/ColorPicker/ColorPicker";
-// import colorPickerOptions from './data/colorPickerOptions.json';
 import Todo from "./components/Todo/Todo";
 import Statistic from "./components/Todo/Statistic/Statistic";
+import EditTodo from "./components/Todo/EditTodo/EditTodo";
 import todoList from "./data/todoList.json";
 
 export default class App extends Component {
@@ -18,6 +15,16 @@ export default class App extends Component {
       return { todos: prevState.todos.filter((todo) => todo.id !== todoId) };
     });
   };
+  completeTodo = (newTodo) => {
+    this.setState({ todos: newTodo });
+  };
+  addTodo = (value) => {
+    this.setState((prevState) => {
+      return {
+        todos: prevState.todos.concat(value),
+      };
+    });
+  };
 
   render() {
     const { todos } = this.state;
@@ -27,20 +34,17 @@ export default class App extends Component {
     );
 
     return (
-      <Section>
-        <Statistic count={todos.length} done={countDone} />
-        <Todo todos={todos} onDeleteTodo={this.deleteTodo} />
-      </Section>
+      <>
+        <Section>
+          <EditTodo todos={todos} onSubmit={this.addTodo} />
+          <Todo
+            todos={todos}
+            onDeleteTodo={this.deleteTodo}
+            onCompleteTodo={this.completeTodo}
+          />
+          <Statistic done={countDone} count={this.state.todos.length} />
+        </Section>
+      </>
     );
   }
 }
-
-// export default function App() {
-//   return (
-//     <>
-//       <Section title="Counter">
-
-//       </Section>
-//     </>
-//   );
-// }
