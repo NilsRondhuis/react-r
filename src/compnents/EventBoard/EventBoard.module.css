@@ -1,0 +1,6 @@
+.eventBoard {
+  display: flex;
+  gap: 10px;
+  padding: 40px 20px;
+  background-color: rgb(153, 183, 183);
+}
