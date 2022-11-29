@@ -1,0 +1,12 @@
+.box {
+  padding: 24px;
+  width: 200px;
+  border: 1px solid black;
+}
+.menu {
+  padding: 24px;
+  width: 200px;
+  color: white;
+  background-color: teal;
+  border: 1px solid black;
+}

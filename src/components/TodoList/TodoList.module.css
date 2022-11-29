@@ -1,0 +1,26 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  width: 320px;
+  border: 1px solid black;
+}
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 5px 10px;
+  color: white;
+  background-color: grey;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
