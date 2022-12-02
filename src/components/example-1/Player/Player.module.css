@@ -1,0 +1,10 @@
+.box {
+  height: 200px;
+  overflow: hidden;
+}
+
+.name {
+  font-weight: 700;
+  text-transform: capitalize;
+  text-align: center;
+}
