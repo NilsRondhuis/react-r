@@ -1,0 +1,30 @@
+.boxCard {
+  position: relative;
+}
+
+.boxImg {
+  height: 200px;
+  overflow: hidden;
+}
+
+.name {
+  font-weight: 700;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: red;
+  background-color: transparent;
+  border: 2px solid red;
+  border-radius: 50%;
+  cursor: pointer;
+}

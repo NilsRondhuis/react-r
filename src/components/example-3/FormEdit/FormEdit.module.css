@@ -1,0 +1,54 @@
+.box {
+  position: relative;
+  margin: 15px;
+  padding: 20px;
+  width: 700px;
+  border: 2px solid gray;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.title {
+  margin: 0 0 20px 0;
+}
+
+.form {
+  display: flex;
+  gap: 15px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+.labelText {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.input {
+  padding: 10px;
+  border: 3px solid gray;
+  border-radius: 6px;
+}
+
+.error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  color: black;
+  background-color: yellow;
+}
+
+.btn {
+  padding: 10px 20px;
+  align-self: flex-end;
+  color: white;
+  background-color: teal;
+  border: 3px solid gray;
+  border-radius: 6px;
+  cursor: pointer;
+}
