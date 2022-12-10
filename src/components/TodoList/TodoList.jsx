@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import css from "./TodoList.module.css";
+import Todo from "./Todo/Todo";
 
 const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => {
   // посчитать todo
@@ -18,19 +19,12 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => {
       <ul className={css.list}>
         {todos.map(({ id, text, completed }) => (
           <li key={id} className={css.item}>
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={() => onToggleCompleted(id)}
+            <Todo
+              text={text}
+              completed={completed}
+              onToggleCompleted={() => onToggleCompleted(id)}
+              onDeleteTodo={() => onDeleteTodo(id)}
             />
-            <p>{text}</p>
-            <button
-              type="button"
-              className={css.btn}
-              onClick={() => onDeleteTodo(id)}
-            >
-              Delete
-            </button>
           </li>
         ))}
       </ul>

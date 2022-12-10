@@ -7,15 +7,40 @@ import Dropdown from "../Dropdown/Dropdown";
 import Form from "../Form/Form";
 import colors from "../../data/colors.json";
 import TodoList from "../TodoList/TodoList";
-import initialTodos from "../../data/todos.json";
+// import initialTodos from "../../data/todos.json";
 import FilterTodo from "../FilterTodo/FilterTodo";
 import TodoEditor from "../TodoEditor/TodoEditor";
+import Modal from "../Modal/Modal";
+import Clock from "../Clock/Clock";
+import tabs from "../../data/tabs.json";
+import Tabs from "../Tabs/Tabs";
+import { ReactComponent as AddIcon } from "../../images/icons/plus.svg";
+import IconBtn from "../common/IconBtn/IconBtn";
 
 class App extends Component {
   state = {
-    todos: initialTodos,
+    todos: [],
     filter: "",
+    showModal: false,
+    showClock: true,
+    showModalEditor: false,
   };
+
+  componentDidMount() {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+
+    if (todos) {
+      this.setState({
+        todos: todos,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.todos !== prevState.todos) {
+      localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    }
+  }
 
   filterTodo = (value) => {
     this.setState({
@@ -33,6 +58,7 @@ class App extends Component {
     this.setState((prevState) => ({
       todos: [todo, ...prevState.todos],
     }));
+    this.toggleModalEditor();
   };
 
   //операция удаления
@@ -61,8 +87,26 @@ class App extends Component {
     console.log(data);
   };
 
+  toggleModal = () => {
+    this.setState((prevState) => ({
+      showModal: !prevState.showModal,
+    }));
+  };
+
+  toggleClock = () => {
+    this.setState((prevState) => ({
+      showClock: !prevState.showClock,
+    }));
+  };
+
+  toggleModalEditor = () => {
+    this.setState((prevState) => ({
+      showModalEditor: !prevState.showModalEditor,
+    }));
+  };
+
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal, showClock, showModalEditor } = this.state;
 
     //фильтрация и результат запись в рендер, можно вынести как метод отдельный
     const normalizeFilter = filter.toLowerCase();
@@ -73,7 +117,14 @@ class App extends Component {
     return (
       <>
         <Section title="Todos">
-          <TodoEditor onAddTodo={this.addTodo} />
+          <IconBtn onClick={this.toggleModalEditor} aria-label="Add todo">
+            <AddIcon width={24} height={24} />
+          </IconBtn>
+          {showModalEditor && (
+            <Modal>
+              <TodoEditor onAddTodo={this.addTodo} />
+            </Modal>
+          )}
           <FilterTodo filter={filter} onFilterTodo={this.filterTodo} />
           <TodoList
             todos={visibleTodo}
@@ -81,6 +132,28 @@ class App extends Component {
             onToggleCompleted={this.toggleCompleted}
             onAddTodo={this.addTodo}
           />
+        </Section>
+        <Section title="Tabs">
+          <Tabs tabs={tabs} />
+        </Section>
+        <Section title="Clock">
+          <button type="button" onClick={this.toggleClock}>
+            Open/Close clock
+          </button>
+          {showClock && <Clock />}
+        </Section>
+        <Section title="Modal">
+          <IconBtn onClick={this.toggleModal} aria-label="Open modal">
+            <AddIcon width={24} height={24} />
+          </IconBtn>
+          {showModal && (
+            <Modal onClose={this.toggleModal}>
+              <p>Modal</p>
+              <button type="button" onClick={this.toggleModal}>
+                Close modal
+              </button>
+            </Modal>
+          )}
         </Section>
         <Section title="Cunter">
           <Counter initialValue={10} />

@@ -1,0 +1,14 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 5px 10px;
+  color: white;
+  background-color: grey;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
