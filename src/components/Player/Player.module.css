@@ -1,0 +1,10 @@
+.box {
+  position: relative;
+  width: 650px;
+  height: 450px;
+}
+
+.player {
+  top: 0;
+  left: 0;
+}

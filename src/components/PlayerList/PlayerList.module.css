@@ -1,0 +1,10 @@
+.list {
+  margin-bottom: 40px;
+}
+
+.item {
+  cursor: pointer;
+}
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
