@@ -1,0 +1,7 @@
+.btn {
+  display: inline-block;
+}
+
+.btn:not(:last-child) {
+  margin-right: 15px;
+}

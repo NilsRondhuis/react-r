@@ -1,0 +1,47 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 440px;
+  border: 2px solid gray;
+  border-radius: 6px;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.title {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.input {
+  align-self: stretch;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+.btn {
+  padding: 10px 20px;
+  color: white;
+  background-color: teal;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn:disabled {
+  opacity: 0.6;
+}
+
+.error {
+  position: absolute;
+  top: 0;
+  right: -190px;
+  padding: 20px;
+  color: white;
+  background-color: rgb(230, 96, 96);
+}
