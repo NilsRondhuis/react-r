@@ -1,0 +1,22 @@
+.form {
+  width: 370px;
+}
+
+.label {
+  margin-right: 15px;
+}
+
+.input {
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+.btn {
+  padding: 5px 10px;
+  color: white;
+  background-color: teal;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
