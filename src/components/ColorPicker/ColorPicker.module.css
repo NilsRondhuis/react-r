@@ -1,0 +1,22 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 24px;
+  width: 350px;
+  border: 1px solid black;
+}
+
+.color {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  transition: all 250ms linear;
+}
+
+.colorActive {
+  composes: color;
+  transform: scale(1.1);
+}
