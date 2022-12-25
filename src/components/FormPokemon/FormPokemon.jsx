@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-class FormPokemon extends Component {
-  static propTypes = {
-    onFormSubmit: PropTypes.func.isRequired,
+const FormPokemon = ({ onFormSubmit }) => {
+  const [name, setName] = useState('');
+
+  const handleChange = e => {
+    setName(e.target.value.toLowerCase());
   };
 
-  state = {
-    name: '',
-  };
-
-  handleChange = e => {
-    this.setState({ name: e.target.value.toLowerCase() });
-  };
-
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const { name } = e.currentTarget.elements;
     if (name.value.trim() === '') {
@@ -23,27 +17,23 @@ class FormPokemon extends Component {
       return;
     }
 
-    this.props.onFormSubmit(name.value);
+    onFormSubmit(name.value);
 
-    this.setState({ name: '' });
+    setName('');
   };
 
-  render() {
-    const { name } = this.state;
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-          />
-        </label>
-        <button type="submit">Search</button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        <input type="text" name="name" value={name} onChange={handleChange} />
+      </label>
+      <button type="submit">Search</button>
+    </form>
+  );
+};
+
+FormPokemon.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
+};
 
 export default FormPokemon;
