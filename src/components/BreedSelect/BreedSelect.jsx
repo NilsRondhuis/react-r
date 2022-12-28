@@ -1,59 +1,51 @@
-import React, { Component } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import toast, { Toaster } from 'react-hot-toast';
 import * as API from '../services/api';
 import Select from 'react-select';
 
-export class BreedSelect extends Component {
-  static propTypes = {
-    onSelect: PropTypes.func.isRequired,
-  };
+const BreedSelect = ({ onSelect }) => {
+  const [breeds, setBreeds] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  state = {
-    breeds: [],
-    isLoading: false,
-  };
+  useEffect(() => {
+    (async function getBreeds() {
+      try {
+        setLoading(true);
+        const breeds = await API.fetchBreeds();
+        setBreeds(breeds);
+        // setBreeds(await API.fetchBreeds())
+      } catch (error) {
+        toast.error('Something went wrong!');
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
 
-  async componentDidMount() {
-    try {
-      this.setState({ isLoading: true });
-      const breeds = await API.fetchBreeds();
-      this.setState({ breeds });
-    } catch {
-      toast.error('Something went wrong!');
-    } finally {
-      this.setState({ isLoading: false });
-    }
-  }
-
-  makeOptions = () => {
-    const options = this.state.breeds.map(breed => ({
+  const option = useMemo(() => {
+    return breeds.map(breed => ({
       value: breed.id,
       label: breed.name,
     }));
-    return options;
+  }, [breeds]);
+
+  const handleChange = breedId => {
+    onSelect(breedId.value);
   };
 
-  handleChange = breedId => {
-    this.props.onSelect(breedId);
-  };
+  return (
+    <div>
+      <form>
+        <Select options={option} onChange={handleChange} isLoading={loading} />
+        <Toaster position="bottom-right" reverseOrder={true} />
+      </form>
+    </div>
+  );
+};
 
-  render() {
-    const options = this.makeOptions();
-    const { isLoading } = this.state;
-    return (
-      <div>
-        <form>
-          <Select
-            options={options}
-            onChange={this.handleChange}
-            isLoading={isLoading}
-          />
-          <Toaster position="bottom-right" reverseOrder={true} />
-        </form>
-      </div>
-    );
-  }
-}
+BreedSelect.propTypes = {
+  onSelect: PropTypes.func.isRequired,
+};
 
 export default BreedSelect;
