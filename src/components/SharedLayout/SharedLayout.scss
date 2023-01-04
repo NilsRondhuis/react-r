@@ -1,0 +1,42 @@
+.main-container {
+  display: flex;
+}
+
+.sidebar {
+  flex-grow: 1;
+  padding: 40px;
+  min-width: 240px;
+  min-height: 100vh;
+  border-right: 2px solid gray;
+}
+
+.list-nav {
+  .item {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 5px;
+  width: 100%;
+  font-size: 21px;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+
+  &.active {
+    background-color: rgb(128, 202, 231);
+  }
+
+  &:hover:not(.active),
+  &:focus-visible:not(.active) {
+    background-color: rgb(128, 202, 231);
+  }
+}
+
+.content {
+  width: 100%;
+}
