@@ -1,0 +1,11 @@
+.item {
+  width: 255px;
+  text-align: center;
+  border: 2px solid gray;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.item:not(:last-child) {
+  margin-bottom: 15px;
+}
