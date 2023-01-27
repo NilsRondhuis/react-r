@@ -68,7 +68,7 @@ const tasksSliceBuilder = createSlice({
       // .addCase(toggleCompleted.pending, state => {
       //   state.isLoading = true;
       // })
-      .addMatcher(isAnyOf(getActions('pending')), state => {
+      .addMatcher(isAnyOf(...getActions('pending')), state => {
         state.isLoading = true;
       })
       // .addCase(fetchTasks.rejected, (state, action) => {
@@ -87,7 +87,7 @@ const tasksSliceBuilder = createSlice({
       //   state.isLoading = false;
       //   state.error = action.payload;
       // })
-      .addMatcher(isAnyOf(getActions('rejected')), (state, action) => {
+      .addMatcher(isAnyOf(...getActions('rejected')), (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       }),
