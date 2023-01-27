@@ -1,10 +1,11 @@
 import Section from 'components/common/Section/Section';
+import UserList from 'components/UserList/UserList';
 
 const App = () => {
   return (
     <>
-      <Section>
-        <p>Go coding</p>
+      <Section title="Users">
+        <UserList />
       </Section>
     </>
   );
