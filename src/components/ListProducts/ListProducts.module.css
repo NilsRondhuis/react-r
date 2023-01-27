@@ -1,0 +1,11 @@
+.list {
+  padding-left: 20px;
+}
+
+.item {
+  padding: 20px 0;
+}
+
+.item:not(:last-child) {
+  border-bottom: 1px solid gray;
+}
