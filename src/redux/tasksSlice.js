@@ -9,7 +9,7 @@ const taskInitialState = {
 
 // for builder notation
 const extraActions = [fetchTasks, addTask, deleteTask, toggleCompleted];
-const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
+const getActions = type => extraActions.map(action => action[type]);
 
 // I can create other function
 const fetchTasksFulfilledReducer = (state, action) => {
