@@ -1,16 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import actions from 'redux/actions';
-import selectors from 'redux/selectors';
-import statusFilters from 'redux/constants';
-import Button from 'components/Button/Button';
+import { Button } from 'components/Button/Button';
+import { statusFilters } from 'redux/constants';
+import { selectStatusFilter } from 'redux/selectors';
+import { setStatusFilter } from 'redux/filtersSlice';
 import css from './StatusFilter.module.css';
 
-const StatusFilter = () => {
+export const StatusFilter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectors.getStatusFilter);
+  const filter = useSelector(selectStatusFilter);
 
-  const handleFilterChange = filter =>
-    dispatch(actions.setStatusFilter(filter));
+  const handleFilterChange = filter => dispatch(setStatusFilter(filter));
 
   return (
     <div className={css.wrapper}>
@@ -35,5 +34,3 @@ const StatusFilter = () => {
     </div>
   );
 };
-
-export default StatusFilter;

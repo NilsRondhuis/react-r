@@ -1,8 +1,7 @@
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import css from './Button.module.css';
 
-const Button = ({
+export const Button = ({
   selected = false,
   type = 'button',
   children,
@@ -20,10 +19,3 @@ const Button = ({
     </button>
   );
 };
-Button.propTypes = {
-  selected: PropTypes.bool,
-  type: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
-
-export default Button;
